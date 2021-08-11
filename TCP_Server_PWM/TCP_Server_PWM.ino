@@ -1,10 +1,10 @@
 const int ledPin = 2; 
 #include <ESP8266WiFi.h>
 int dutyCycle;
-int port = 8888;
+int port = 8888;    // change the port number according to your Server
 WiFiServer server(port);
-const char *ssid = "your SSID"; 
-const char *password = "your password";
+const char *ssid = "your SSID";   //replace this with your wifi's SSID
+const char *password = "your password";   //replace this with your wifi's password
 
 
 void setup() 
@@ -45,8 +45,7 @@ void loop()
     
     while(client.connected()){      
       while(client.available()>0){
-        // read data from the connected client
-        //Serial.write(client.read()); 
+       
         dutyCycle = client.parseInt();
         Serial.println(dutyCycle);
         analogWrite(ledPin, dutyCycle);
