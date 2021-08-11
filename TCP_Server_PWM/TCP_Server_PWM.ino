@@ -1,7 +1,7 @@
 const int ledPin = 2; 
 #include <ESP8266WiFi.h>
 int dutyCycle;
-int port = 8888;    // change the port number according to your Server
+int port = 8888;   
 WiFiServer server(port);
 const char *ssid = "your SSID";   //replace this with your wifi's SSID
 const char *password = "your password";   //replace this with your wifi's password
