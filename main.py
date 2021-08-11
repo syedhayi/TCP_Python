@@ -5,15 +5,17 @@ import time
 import math
 import socket
 
-
+# Re-maps a number from one range to another.
+#That is, a value of fromLow would get mapped to toLow, a value of fromHigh to toHigh,
+#values in-between to values in-between, etc.
 def remap(x, in_min, in_max, out_min, out_max):
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
 
 
-#host = '192.168.31.90'
-host = '192.168.31.166'
-port = 8888
+
+host = '192.168.xx.xx' #replace this with your servers' host ip
+port = 8888             #replace this with your servers' host port
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((host, port))
@@ -51,7 +53,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print(pwm)
             cv2.putText(img, f'{int(pwm)}', (cx, cy-20), cv2.FONT_HERSHEY_SIMPLEX,
                         0.5, (255, 0, 0), 2)
-            s.sendall(str.encode(str(pwm) + ' ' ))
+            s.sendall(str.encode(str(pwm) + ' '))
         cTime = time.time()
         fps = 1 / (cTime - pTime)
         pTime = cTime
